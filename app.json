@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "coffee-app",
-    "slug": "coffee-app",
+    "slug": "coffee-app-ui",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -25,6 +25,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "219bc8b3-d472-4fc3-af7e-1d9b9fa4bdbb"
+      }
+    },
+    "owner": "aksh03"
   }
 }
