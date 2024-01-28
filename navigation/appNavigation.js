@@ -20,7 +20,7 @@ LogBox.ignoreLogs([
 
 export default function AppNavigation() {
   return (
-    <NavigationContainer>
+    <NavigationContainer className="fixed">
       <Stack.Navigator screenOptions={{
         contentStyle: { backgroundColor: 'white' }
       }}>
@@ -39,6 +39,7 @@ function HomeTabs() {
       tabBarShowLabel: false,
       tabBarIcon: ({ focused }) => menuIcons(route, focused),
       tabBarStyle: {
+        position: 'fixed',
         marginBottom: 10,
         height: 60,
         alignItems: 'center',

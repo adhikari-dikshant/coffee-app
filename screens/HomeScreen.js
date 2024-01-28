@@ -19,8 +19,8 @@ export default function HomeScreen() {
       <StatusBar />
       <Image
         source={require('../assets/images/beansBackground1.png')}
-        style={{ height: height * 0.1 }}
-        className="w-full absolute -top-5 opacity-10" />
+        style={{ height: height * 0.2 }}
+        className="w-full absolute -top-2 opacity-10" />
       <SafeAreaView className={android ? '-mb-1' : ''}>
         {/* avatar and bell icon */}
         <View className="mx-4 flex-row justify-between items-center">
@@ -28,7 +28,6 @@ export default function HomeScreen() {
             source={require('../assets/images/avatar.png')}
             className="h-7 w-7 rounded-lg"
           />
-
           <View className="flex-row items-center space-x-2">
             <MapPinIcon size="20" color={themeColors.bgLight} />
             <Text className="font-semibold text-base">
@@ -38,18 +37,18 @@ export default function HomeScreen() {
           <BellIcon size="23" color="black" />
         </View>
         {/* search bar */}
-        <View className="mx-5 shadow" style={{ marginTop: height * 0.02 }}>
+        <View className="mx-5 shadow" style={{ marginTop: height * 0.05 }}>
           <View className="flex-row items-center rounded-2xl p-0.5 bg-[#e6e6e6]">
             <TextInput placeholder='Search' className="p-2 flex-1 font-semibold text-gray-700" />
             <TouchableOpacity
-              className="rounded-xl p-2"
+              className="rounded-xl p-2.5"
               style={{ backgroundColor: themeColors.bgLight }}>
               <MagnifyingGlassIcon size="20" strokeWidth={1.5} color="white" />
             </TouchableOpacity>
           </View>
         </View>
         {/* categories */}
-        <View className="px-5 mt-4">
+        <View className="px-5 mt-6">
           <FlatList
             horizontal
             showsHorizontalScrollIndicator={false}
@@ -63,14 +62,13 @@ export default function HomeScreen() {
                 <TouchableOpacity
                   onPress={() => setActiveCategory(item.id)}
                   style={{ backgroundColor: isActive ? themeColors.bgLight : 'rgba(0,0,0,0.07)' }}
-                  className="p-4 px-5 mr-2 rounded-2xl shadow">
+                  className="p-3 px-5 mr-2 rounded-2xl shadow">
                   <Text className={"font-semibold " + activeTextClass}>{item.title}</Text>
                 </TouchableOpacity>
               )
             }}
           />
         </View>
-
       </SafeAreaView>
 
       {/* coffee cards */}
@@ -89,10 +87,7 @@ export default function HomeScreen() {
             slideStyle={{ display: 'flex', alignItems: 'center' }}
           />
         </View>
-
       </View>
-
-
     </View>
   )
 }
