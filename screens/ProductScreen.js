@@ -20,7 +20,7 @@ export default function FavouriteScreen(props) {
       <StatusBar style="light" />
       <Image
         source={require('../assets/images/beansBackground2.png')}
-        style={{ height: 300, borderBottomLeftRadius: 50, borderBottomRightRadius: 50 }}
+        style={{ height: 200, borderBottomLeftRadius: 55, borderBottomRightRadius: 55 }}
         className="w-full absolute" />
       <SafeAreaView className="space-y-4 flex-1">
         <View className="mx-4 flex-row justify-between items-center">
@@ -44,12 +44,12 @@ export default function FavouriteScreen(props) {
         </View>
         <View
           style={{ backgroundColor: themeColors.bgLight }}
-          className="flex-row justify-center items-center mx-4 rounded-3xl p-1 px-2 space-x-1 opacity-90 w-16">
+          className="flex-row justify-center items-center mx-4 rounded-3xl p-0.25 px-2 space-x-1 opacity-90 w-16">
           <StarIcon size="15" color="white" />
           <Text className="text-base font-semibold text-white">{item.stars}</Text>
         </View>
         <View className="px-4 flex-row justify-between items-center">
-          <Text style={{ color: themeColors.text }} className="text-3xl font-semibold">
+          <Text style={{ color: themeColors.text }} className="text-2xl font-bold">
             {item.name}
           </Text>
           <Text style={{ color: themeColors.text }} className="text-lg font-semibold">
@@ -63,19 +63,19 @@ export default function FavouriteScreen(props) {
             <TouchableOpacity
               onPress={() => setSize('small')}
               style={{ backgroundColor: size == 'small' ? themeColors.bgLight : 'rgba(0,0,0,0.07)' }}
-              className="p-3 px-8 rounded-full">
+              className="p-3 px-7 rounded-xl">
               <Text className={size == 'small' ? "text-white" : "text-gray-700"}>Small</Text>
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => setSize('medium')}
               style={{ backgroundColor: size == 'medium' ? themeColors.bgLight : 'rgba(0,0,0,0.07)' }}
-              className="p-3 px-8 rounded-full">
+              className="p-3 px-7 rounded-xl">
               <Text className={size == 'medium' ? "text-white" : "text-gray-700"}>Medium</Text>
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => setSize('large')}
               style={{ backgroundColor: size == 'large' ? themeColors.bgLight : 'rgba(0,0,0,0.07)' }}
-              className="p-3 px-8 rounded-full">
+              className="p-3 px-7 rounded-xl">
               <Text className={size == 'large' ? "text-white" : "text-gray-700"}>Large</Text>
             </TouchableOpacity>
           </View>
@@ -87,12 +87,9 @@ export default function FavouriteScreen(props) {
             {item.desc}
           </Text>
         </View>
-
-
-
-
       </SafeAreaView>
-      <View className={`space-y-3 ${android ? 'mb-2' : 'mb-1'}`}>
+
+      <View className={`space-y-3 ${android ? 'mb-3' : 'mb-2'}`}>
         <View className="flex-row justify-between items-center px-4 mb-2">
           <View className="flex-row items-center space-x-1">
             <Text className="text-base text-gray-700 font-semibold opacity-60">
@@ -101,7 +98,7 @@ export default function FavouriteScreen(props) {
             <Text className="text-base text-black font-semibold"> {item.volume}</Text>
           </View>
           <View
-            className="flex-row items-center space-x-4 border-gray-500 border rounded-full p-1 px-4">
+            className="flex-row items-center space-x-4 border-gray-500 border rounded-xl p-1 px-4">
             <TouchableOpacity>
               <MinusIcon size="20" strokeWidth={3} color={themeColors.text} />
             </TouchableOpacity>
@@ -113,18 +110,16 @@ export default function FavouriteScreen(props) {
         </View>
         {/* buy now button */}
         <View className="flex-row justify-between px-4">
-          <TouchableOpacity className="p-4 rounded-full border border-gray-400">
+          <TouchableOpacity className="p-4 rounded-xl border border-gray-400">
             <ShoppingBag size="30" color="gray" />
           </TouchableOpacity>
           <TouchableOpacity
             style={{ backgroundColor: themeColors.bgLight }}
-            className="p-4 rounded-full flex-1 ml-4">
+            className="p-4 rounded-xl flex-1 ml-4">
             <Text className="text-center text-white text-base font-semibold">Buy now</Text>
           </TouchableOpacity>
         </View>
       </View>
-
-
     </View>
   )
 }

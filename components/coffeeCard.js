@@ -70,11 +70,7 @@ export default function CoffeeCard({ item }) {
             <PlusIcon size="25" strokeWidth={2} color={themeColors.bgDark} />
           </TouchableOpacity>
         </View>
-
-
       </View>
-
     </View>
-
   )
 }
