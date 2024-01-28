@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native'
 import { StarIcon } from 'react-native-heroicons/solid';
 import { PlusIcon } from 'react-native-heroicons/outline';
 const { width, height } = Dimensions.get('window');
-const android = Platform.OS == 'android';
+const ios = Platform.OS == 'ios';
 export default function CoffeeCard({ item }) {
   const navigation = useNavigation();
   return (
@@ -14,17 +14,17 @@ export default function CoffeeCard({ item }) {
       style={{
         borderRadius: 40,
         backgroundColor: themeColors.bgDark,
-        height: android ? height * 0.5 : height * 3,
-        width: width * 0.65,
+        height: ios ? height * 0.4 : height * 0.55,
+        width: width * 0.66,
       }}
     >
       <View
         style={{
           shadowColor: 'black',
           shadowRadius: 30,
-          shadowOffset: { width: 0, height: 20 },
+          shadowOffset: { width: 0, height: 40 },
           shadowOpacity: 0.8,
-          marginTop: android ? -(height * 0.1) : 10,
+          marginTop: ios ? -(height * 0.08) : 15,
         }}
         className="flex-row justify-center">
         <Image
@@ -32,7 +32,7 @@ export default function CoffeeCard({ item }) {
           className="h-40 w-40"
         />
       </View>
-      <View className={`px-5 flex-1 justify-between ${android ? 'mt-4' : ''}`}>
+      <View className={`px-5 flex-1 justify-between ${ios ? 'mt-5' : ''}`}>
         <View className="space-y-3 mt-3">
           <Text className="text-3xl text-white font-semibold z-10">
             {item.name}
@@ -52,7 +52,7 @@ export default function CoffeeCard({ item }) {
 
 
         <View style={{
-          backgroundColor: android ? themeColors.bgDark : 'transparent',
+          backgroundColor: ios ? themeColors.bgDark : 'transparent',
           shadowColor: themeColors.bgDark,
           shadowRadius: 25,
           shadowOffset: { width: 0, height: 40 },
@@ -70,7 +70,11 @@ export default function CoffeeCard({ item }) {
             <PlusIcon size="25" strokeWidth={2} color={themeColors.bgDark} />
           </TouchableOpacity>
         </View>
+
+
       </View>
+
     </View>
+
   )
 }
