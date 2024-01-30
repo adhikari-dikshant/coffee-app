@@ -5,11 +5,9 @@ import HomeScreen from '../screens/HomeScreen';
 import { Dimensions, LogBox, Platform, Text, View } from 'react-native';
 import ProductScreen from '../screens/ProductScreen';
 import { themeColors } from '../theme';
-
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { HomeIcon as HomeOutline, HeartIcon as HeartOutline, ShoppingBagIcon as BagOutline } from 'react-native-heroicons/outline';
 import { HomeIcon as HomeSolid, HeartIcon as HeartSolid, ShoppingBagIcon as BagSolid } from 'react-native-heroicons/solid';
-
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
