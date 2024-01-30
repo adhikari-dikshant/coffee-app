@@ -1,4 +1,4 @@
-import { View, Text, Image, TouchableOpacity, TextInput, FlatList, Dimensions, Platform } from 'react-native'
+import { View, Text, Image, TouchableOpacity, TextInput, FlatList, Dimensions, Platform, ScrollView } from 'react-native'
 import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { themeColors } from '../theme';
@@ -72,22 +72,30 @@ export default function HomeScreen() {
       </SafeAreaView>
 
       {/* coffee cards */}
-      <View className={`overflow-visible flex justify-center flex-1 ${android ? 'mt-4' : ''}`}>
-        <View>
-          <Carousel
-            containerCustomStyle={{ overflow: 'visible' }}
-            data={coffeeItems}
-            renderItem={({ item }) => <CoffeeCard item={item} />}
-            firstItem={1}
-            loop={true}
-            inactiveSlideScale={0.75}
-            inactiveSlideOpacity={0.75}
-            sliderWidth={width}
-            itemWidth={width * 0.63}
-            slideStyle={{ display: 'flex', alignItems: 'center' }}
-          />
+      <ScrollView contentContainerStyle={{ flexGrow: 0.5 }}>
+        <View
+          style={{
+            overflow: 'visible',
+            flex: 1,
+            justifyContent: 'center',
+            marginTop: android ? 4 : 0
+          }}>
+          <View>
+            <Carousel
+              containerCustomStyle={{ overflow: 'visible' }}
+              data={coffeeItems}
+              renderItem={({ item }) => <CoffeeCard item={item} />}
+              firstItem={1}
+              loop
+              inactiveSlideScale={0.75}
+              inactiveSlideOpacity={0.75}
+              sliderWidth={width}
+              itemWidth={width * 0.63}
+              slideStyle={{ display: 'flex', alignItems: 'center' }}
+            />
+          </View>
         </View>
-      </View>
+      </ScrollView>
     </View>
   )
 }

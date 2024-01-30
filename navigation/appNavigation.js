@@ -1,24 +1,24 @@
-import React from 'react'
+import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from '../screens/HomeScreen';
-import { Dimensions, LogBox, Platform, Text, View } from 'react-native';
 import ProductScreen from '../screens/ProductScreen';
-import { themeColors } from '../theme';
+import { Dimensions, LogBox, Platform, View, KeyboardAvoidingView } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { HomeIcon as HomeOutline, HeartIcon as HeartOutline, ShoppingBagIcon as BagOutline } from 'react-native-heroicons/outline';
 import { HomeIcon as HomeSolid, HeartIcon as HeartSolid, ShoppingBagIcon as BagSolid } from 'react-native-heroicons/solid';
+import { themeColors } from '../theme';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
-const android = Platform.OS == 'android';
+const android = Platform.OS === 'android';
 LogBox.ignoreLogs([
   'Non-serializable values were found in the navigation state',
 ]);
 
 export default function AppNavigation() {
   return (
-    <NavigationContainer className="fixed">
+    <NavigationContainer>
       <Stack.Navigator screenOptions={{
         contentStyle: { backgroundColor: 'white' }
       }}>
@@ -27,36 +27,36 @@ export default function AppNavigation() {
       </Stack.Navigator>
     </NavigationContainer>
   )
-
 }
 
 function HomeTabs() {
   return (
-    <Tab.Navigator screenOptions={({ route }) => ({
-      headerShown: false,
-      tabBarShowLabel: false,
-      tabBarIcon: ({ focused }) => menuIcons(route, focused),
-      tabBarStyle: {
-        position: 'fixed',
-        marginBottom: 10,
-        height: 60,
-        alignItems: 'center',
-        borderRadius: 20,
-        marginHorizontal: 20,
-        backgroundColor: themeColors.bgLight,
-
-      },
-      tabBarItemStyle: {
-        marginTop: android ? 0 : 0,
-
-      }
-    })}
-
+    <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      style={{ flex: 1 }}
     >
-      <Tab.Screen name="home" component={HomeScreen} />
-      <Tab.Screen name="favourite" component={HomeScreen} />
-      <Tab.Screen name="cart" component={HomeScreen} />
-    </Tab.Navigator>
+      <Tab.Navigator
+        screenOptions={({ route }) => ({
+          headerShown: false,
+          tabBarShowLabel: false,
+          tabBarIcon: ({ focused }) => menuIcons(route, focused),
+          tabBarStyle: {
+            position: 'absolute',
+            bottom: 10,
+            left: 20,
+            right: 20,
+            height: 60,
+            alignItems: 'center',
+            borderRadius: 20,
+            backgroundColor: themeColors.bgLight,
+          },
+        })}
+      >
+        <Tab.Screen name="home" component={HomeScreen} />
+        <Tab.Screen name="favourite" component={HomeScreen} />
+        <Tab.Screen name="cart" component={HomeScreen} />
+      </Tab.Navigator>
+    </KeyboardAvoidingView>
   )
 }
 
@@ -70,10 +70,9 @@ const menuIcons = (route, focused) => {
     icon = focused ? <BagSolid size="20" color={themeColors.bgLight} /> : <BagOutline size="24" strokeWidth={1} color="white" />
   }
 
-
   let buttonClass = focused ? "bg-white" : "";
   return (
-    <View className={"flex items-center rounded-full p-3 shadow " + buttonClass}>
+    <View style={{ alignItems: 'center', justifyContent: 'center' }} className={"rounded-full p-3 shadow " + buttonClass}>
       {icon}
     </View>
   )
